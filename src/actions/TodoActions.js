@@ -5,10 +5,11 @@ export const AddTodoAction = (todo) => (dispatch, getState) => {
 
     const hasTodo=todos.find(i=>i.todo === todo)
     console.log(hasTodo)
+    console.log(todo)
 
       if(!hasTodo && todo !== '') {
         dispatch({
-            type:"ADD_TODO_SUCCESS",
+            type:"ADD_TODO",
             payload: [ {id:todo, todo}, ...todos],
         })
     }
