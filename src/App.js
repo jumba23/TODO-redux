@@ -1,6 +1,7 @@
 import {useState} from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { AddTodoAction } from "./actions/TodoActions";
+import { RemoveTodoAction } from "./actions/TodoActions";
 import './App.css';
 
 function App() {
@@ -12,8 +13,11 @@ function App() {
 
 const handleSubmit = (e) => {
   e.preventDefault()
-  console.log(todo)
   dispatch(AddTodoAction(todo))
+}
+
+const removeHandler = (t) => {
+  dispatch(RemoveTodoAction(t))
 }
 
 
@@ -39,7 +43,9 @@ const handleSubmit = (e) => {
           <span className='todoText'>
             {t.todo}
           </span>
-          <button style={{borderRadius: 25, padding:10, border:"1px solid white", color: "white", backgroundColor:"orange"}}>Delete</button>
+          <button style={{borderRadius: 25, padding:10, border:"1px solid white", color: "white", backgroundColor:"orangered"}} 
+          onClick={() => removeHandler(t)}
+          >Delete</button>
         </li>
         ))
        }
